@@ -1,0 +1,7 @@
+# Exact versions for reproducible release builds (see packaging/build.ps1).
+# Only PySide6-Essentials is needed: the app uses QtCore/QtGui/QtWidgets and
+# the image-format plugins, all of which live in that wheel.
+PySide6-Essentials==6.11.2
+Pillow==12.3.0
+colorthief==0.2.1
+pyinstaller==6.22.3

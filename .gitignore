@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Build output (published as GitHub release downloads, never committed)
+build/
+dist/
+
+# Saved boards are personal content, not source code
+*.moodboard/
