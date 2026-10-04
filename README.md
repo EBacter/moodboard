@@ -41,10 +41,10 @@ python main.py MyBoard.moodboard    # open an existing board folder
 
 | Action | How |
 | --- | --- |
-| Pan | Middle-mouse drag, Space + drag, or scroll / trackpad |
-| Zoom | Ctrl + scroll, Ctrl+= / Ctrl+-, Ctrl+0 = 100%, Ctrl+1 = fit board |
+| Pan | Drag empty canvas, middle-mouse drag, Space + drag, trackpad scroll, or Shift + scroll (sideways) |
+| Zoom | Mouse wheel (or Ctrl + scroll / pinch), Ctrl+= / Ctrl+-, Ctrl+0 = 100%, Ctrl+1 = fit board |
 | Add images | Drag & drop files (or images from a browser), Ctrl+V, or Insert → Add Image… (Ctrl+I) |
-| Select | Click, Ctrl+click, drag a box on empty canvas, Ctrl+A |
+| Select | Click, Ctrl+click, Shift/Ctrl + drag a box on empty canvas, Ctrl+A |
 | Move / resize | Drag an item; drag a corner handle to resize (keeps aspect ratio) |
 | Delete | Delete or Backspace |
 | Group / ungroup | Ctrl+G / Ctrl+Shift+G |

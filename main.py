@@ -63,12 +63,12 @@ QMenu::separator { height: 1px; background: #E6E6EA; margin: 4px 6px; }
 
 SHORTCUTS_HTML = """
 <table cellpadding="3">
-<tr><td><b>Pan</b></td><td>Middle-drag, or hold Space + drag, or scroll</td></tr>
-<tr><td><b>Zoom</b></td><td>Ctrl + scroll · Ctrl+= / Ctrl+- · Ctrl+0 (100%) · Ctrl+1 (fit)</td></tr>
+<tr><td><b>Pan</b></td><td>Drag empty canvas · middle-drag · Space + drag · trackpad scroll</td></tr>
+<tr><td><b>Zoom</b></td><td>Mouse wheel · Ctrl+= / Ctrl+- · Ctrl+0 (100%) · Ctrl+1 (fit)</td></tr>
 <tr><td><b>Add image</b></td><td>Drag &amp; drop · Ctrl+V · Ctrl+I</td></tr>
 <tr><td><b>Add note</b></td><td>T, or double-click empty canvas (Esc finishes editing)</td></tr>
 <tr><td><b>Resize</b></td><td>Drag a corner handle (aspect ratio kept)</td></tr>
-<tr><td><b>Select</b></td><td>Click · Ctrl+click · drag a box on empty canvas · Ctrl+A</td></tr>
+<tr><td><b>Select</b></td><td>Click · Ctrl+click · Shift + drag a box on empty canvas · Ctrl+A</td></tr>
 <tr><td><b>Delete</b></td><td>Delete / Backspace</td></tr>
 <tr><td><b>Group</b></td><td>Ctrl+G · Ungroup Ctrl+Shift+G</td></tr>
 <tr><td><b>Order</b></td><td>Ctrl+] bring to front · Ctrl+[ send to back</td></tr>

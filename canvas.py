@@ -584,13 +584,18 @@ class BoardView(QGraphicsView):
             self._refresh_magnifier()
 
     def wheelEvent(self, event):
-        if event.modifiers() & Qt.KeyboardModifier.ControlModifier:
+        # A mouse wheel zooms. Trackpads (which report pixel deltas or a
+        # scroll phase) pan instead; Ctrl zooms either way, which also covers
+        # Windows touchpad pinches, as they arrive as Ctrl + wheel.
+        mods = event.modifiers()
+        trackpad = not event.pixelDelta().isNull() or event.phase() != Qt.ScrollPhase.NoScrollPhase
+        if mods & Qt.KeyboardModifier.ControlModifier or not (trackpad or mods & Qt.KeyboardModifier.ShiftModifier):
             delta = event.angleDelta().y() or event.angleDelta().x()
             if delta:
                 self.zoom_by(1.0015 ** delta, event.position().toPoint())
             event.accept()
             return
-        # Plain wheel / trackpad scroll pans the canvas; Shift swaps axes.
+        # Trackpad scroll / Shift + wheel pans the canvas; Shift swaps axes.
         pixel = event.pixelDelta()
         if not pixel.isNull():
             dx, dy = pixel.x(), pixel.y()
@@ -748,6 +753,19 @@ class BoardView(QGraphicsView):
                 self._begin_resize(*hit)
                 event.accept()
                 return
+        selection_mods = Qt.KeyboardModifier.ShiftModifier | Qt.KeyboardModifier.ControlModifier
+        if button == Qt.MouseButton.LeftButton and not event.modifiers() & selection_mods and not self.items(pos):
+            # Left-drag on empty canvas pans; Shift/Ctrl + drag draws a
+            # selection box. The scene still sees the press, so it clears the
+            # selection and ends note editing as a click on the canvas should.
+            mode = self.dragMode()
+            self.setDragMode(QGraphicsView.DragMode.NoDrag)
+            super().mousePressEvent(event)
+            self.setDragMode(mode)
+            self._pan_last = pos
+            self._set_cursor(Qt.CursorShape.ClosedHandCursor)
+            event.accept()
+            return
         super().mousePressEvent(event)
         if button == Qt.MouseButton.LeftButton:
             self._move_start = {item: item.pos() for item in self.board.top_level_selected()}
